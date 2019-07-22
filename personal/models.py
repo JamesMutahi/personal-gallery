@@ -78,5 +78,10 @@ class Image(models.Model):
         images = cls.objects.filter(category__icontains=search_term)
         return images
 
+    @classmethod
+    def filter_by_location(cls, search_term):
+        locations = cls.objects.filter(location__location_name__icontains=search_term)
+        return locations
+
     class Meta:
         ordering = ['submited']

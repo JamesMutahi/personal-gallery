@@ -13,32 +13,10 @@
 </nav>
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by category..">
-<div class="container-fluid">
-	<!-- Grid row -->
-	<div class="row">
-
-		<!-- Grid column -->
-		<div class="col-md-12 d-flex justify-content-center m-2 ">
-			<div id="myBtnContainer">
-				<button type="button" class="btn btn-outline-black waves-effect filter" onclick="filterSelection('all')"
-				        data-rel="all"> Show all
-				</button>
-
-				{% for location in location %}
-				<button type="button" class="btn btn-outline-black waves-effect filter" data-rel="1"><a
-								href="{% url 'location' location_name=location.location_name %}">{{location.location_name}}</a></button>
-
-				{% endfor %}
-			</div>
-			<!-- Grid column -->
-
-		</div>
-
-	</div>
-
+      <h3>Pictures shot in {{location}} </h3>
 	<div class="gallery" id="myGallery">
 		<ul id="myUL">
-			{% for image in images %}
+			{% for image in location_images %}
 			<li class="filterDiv {{image.category}}"><a href="#"><span class="category-none">{{image.category}}</span>
 				<!-- Grid column -->
 				<div class="mb-3 pics animation all 2" id="gallery">
