@@ -39,5 +39,6 @@ def getcat(request, catid):
 
 def get_image_by_location(request, location_name):
     location = Location.objects.all()
+    location_name = location_name
     location_images = Image.filter_by_location(location_name)
-    return render(request, 'location.html', {"location_images": location_images, "location": location})
+    return render(request, 'location.html', {"location_images": location_images, "location": location, "location_name" : location_name })
