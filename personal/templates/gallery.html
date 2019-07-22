@@ -11,7 +11,10 @@
 		</div>
 	</div>
 </nav>
-
+<p>Categories:
+{% for category in categories %}
+{{ category.Name }}
+	{% endfor %}</p>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by category..">
 <div class="container-fluid">
 	<!-- Grid row -->
