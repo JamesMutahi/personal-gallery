@@ -84,6 +84,13 @@
 
 </div>
 <!--	js-->
+   <script type="text/javascript">
+       function copyToClipboard(element) {
+           var copyUrl = document.getElementById(element)
+           copyUrl.select();
+           document.execCommand("copy")
+       }
+   </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.slim.min.js"></script>
 <script src="static/js/script.js"></script>
 <!-- JQuery -->
