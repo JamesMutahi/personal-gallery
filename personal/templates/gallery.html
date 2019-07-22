@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{{block.super}}
+<nav class="navbar navbar-inverse navbar-fixed-top bg-transparent" style="height: 15%;">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">
+				<h1 class="james mt-n5">Gallery</h1>
+			</a>
+		</div>
+	</div>
+</nav>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by category..">
+<div class="container-fluid">
+	<!-- Grid row -->
+	<div class="row">
+
+		<!-- Grid column -->
+		<div class="col-md-12 d-flex justify-content-center m-2 ">
+			<div id="myBtnContainer">
+				<button type="button" class="btn btn-outline-black waves-effect filter" onclick="filterSelection('all')"
+				        data-rel="all"> Show all
+				</button>
+
+				{% for location in location %}
+				<button type="button" class="btn btn-outline-black waves-effect filter" data-rel="1"><a
+								href="{% url 'location' location_name=location.location_name %}">{{location.location_name}}</a></button>
+
+				{% endfor %}
+			</div>
+			<!-- Grid column -->
+
+		</div>
+
+	</div>
+
+	<div class="gallery" id="myGallery">
+		<ul id="myUL">
+			{% for image in images %}
+			<li class="filterDiv {{image.category}}"><a href="#"><span class="category-none">{{image.category}}</span>
+				<!-- Grid column -->
+				<div class="mb-3 pics animation all 2" id="gallery">
+					<img src="{{image.image.url}}" class="img-responsive img-fluid galleryitem"
+					     onclick="showinfo({{image.allinfo}})"
+					     width="100%">
+				</div>
+				<!-- Grid column -->
+			</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+
+
+	<!-- Full Height Modal Right -->
+	<div class="modal fade right" id="ImageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	     aria-hidden="true">
+
+		<!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+		<div class="modal-dialog modal-full-height modal-right" role="document">
+
+
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title w-100" id="imagetitle"></h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<img id="imageimage" class="imagemodal img-fluid">
+					<p id="imagedescription"></p>
+					<a target="_blank" class="label btn-success" id="imagedirectlink">Direct image link</a>
+				</div>
+				<div class="float-left">
+					<input type="text" class="form-control" id="imagelink" value="nothing">
+					<button type="button" class="btn btn-secondary" onclick="copyaction()">Copy Link</button>
+				</div>
+				<div class="modal-footer justify-content-center clear-fix">
+
+					<div class="float-right">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Full Height Modal Right -->
+	{% endblock %}
