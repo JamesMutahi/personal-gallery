@@ -74,10 +74,13 @@
 					<a target="_blank" class="label btn-success" id="imagedirectlink">Direct image link</a>
 				</div>
 				<div class="float-left">
+
 					<input class="form-control input-lg" type="text"
-                               value="https://jamesmutahigallery.herokuapp.com{{image.image.url}}"
-                               id="{{image.id}}-url">
-					<button type="button" class="btn btn-secondary" onclick="copyaction()">Copy Link</button>
+					       value="https://jamesmutahigallery.herokuapp.com{{image.image.url}}"
+					       id="{{image.id}}-url">
+					<button class="btn btn-outline-info" onclick="copyToClipboard('{{image.id}}-url')">Copy
+						Image Url
+					</button>
 				</div>
 				<div class="modal-footer justify-content-center clear-fix">
 
